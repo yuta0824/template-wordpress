@@ -1,0 +1,41 @@
+// 開発時に削除してください。
+// ---------------------
+
+// パーシャルファイルのGlobeの動作確認
+// https://github.com/jakerambo/gulp-sass-glob-use-forward
+.c-btn {
+	font-size: 10px;
+	color: blue;
+
+	@media screen and (width >= 768px) {
+		color: red;
+	}
+}
+
+.test {
+	color: blue;
+
+	@media screen and (width >= 768px) {
+		color: red;
+	}
+}
+
+// Autoprefixerの動作確認
+// https://github.com/postcss/autoprefixer/blob/main/README.md
+::placeholder {
+	color: gray;
+}
+
+@media (min-resolution: 2dppx) {
+	.image {
+		background-image: url("image@2x.png");
+	}
+}
+
+// css-declaration-sorterの動作確認
+// https://github.com/Siilwyn/css-declaration-sorter
+.css-declaration-sorter {
+	color: red;
+	bottom: 10px;
+	align-self: center;
+}

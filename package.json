@@ -1,0 +1,28 @@
+{
+	"name": "template-wp",
+	"version": "1.0.0",
+	"description": "WordPress開発用テーマ",
+	"scripts": {
+		"default": "npx gulp",
+		"webp": "npx gulp webp"
+	},
+	"devDependencies": {
+		"autoprefixer": "^9.8.8",
+		"browser-sync": "^2.27.10",
+		"css-declaration-sorter": "^5.1.2",
+		"del": "^6.1.1",
+		"gulp": "^4.0.2",
+		"gulp-group-css-media-queries": "^1.2.2",
+		"gulp-notify": "^3.2.0",
+		"gulp-plumber": "^1.2.1",
+		"gulp-postcss": "^9.0.1",
+		"gulp-sass": "^5.1.0",
+		"gulp-sass-glob-use-forward": "^0.1.3",
+		"gulp-webp": "^4.0.1",
+		"sass": "^1.62.0",
+		"stylelint": "^15.10.3",
+		"stylelint-config-recess-order": "^4.3.0",
+		"stylelint-config-recommended-scss": "^13.0.0",
+		"stylelint-config-standard-scss": "^11.0.0"
+	}
+}
