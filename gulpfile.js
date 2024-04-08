@@ -1,3 +1,4 @@
+// Gulp及び必要なプラグインの読み込み
 const { src, dest, series, watch, parallel } = require("gulp");
 const sass = require("gulp-sass")(require("sass"));
 const fs = require("fs");
@@ -11,7 +12,7 @@ const webp = require("gulp-webp");
 const browserSync = require("browser-sync");
 const tinypng = require("gulp-tinypng-compress");
 
-// パスの定義
+// WordPressテーマやローカル開発環境のパスを定義します。
 const proxy = "http://site-host.local/"; // local ドメイン
 const themaName = "./wp-thema"; // WordPressテーマ名
 const srcSass = "./src/scss/**/*.scss";
@@ -55,9 +56,8 @@ const updateIndexWithUse = (done) => {
 };
 
 /**
- * Sassファイルをコンパイルする関数。SassファイルをCSSにコンパイルし、
- * 自動的にベンダープレフィックスを追加、メディアクエリをグループ化し、
- * CSSプロパティをアルファベット順にソートします。
+ * Sassファイルをコンパイルし、出力先にCSSファイルを生成します。
+ * 自動プレフィックスの追加、メディアクエリのグループ化、CSSプロパティのソートを行います。
  */
 const compileSass = (done) => {
 	src(srcSass)
@@ -80,7 +80,9 @@ const compileSass = (done) => {
 	done();
 };
 
-// ローカルサーバー
+/**
+ * ローカル開発サーバーを起動し、ファイルの変更をリアルタイムでブラウザに反映させる関数です。
+ */
 const browserSyncFunc = (done) => {
 	browserSync.init({
 		proxy: proxy,
@@ -92,6 +94,10 @@ const browserSyncFunc = (done) => {
 	done();
 };
 
+
+/**
+ * ファイル変更時にブラウザをリロードする関数です。
+ */
 const browserSyncReload = (done) => {
 	browserSync.reload();
 	done();
@@ -99,8 +105,7 @@ const browserSyncReload = (done) => {
 
 
 /**
- * 画像ファイルをTinyPNGを使用して圧縮する関数。
- * PNG、JPG、JPEG形式の画像ファイルを対象に圧縮を行い、出力ディレクトリに保存します。
+ * 画像ファイルをTinyPNGを使用して圧縮し、出力先に保存します。
  */
 const tinypngApi = "XXXXXXXXXXXXXX"; // TinyPNGのAPI Key
 const imageMiniTinypng = () => {
@@ -115,7 +120,6 @@ const imageMiniTinypng = () => {
 
 /**
  * 画像ファイルをTinyPNGで圧縮した後、WebP形式に変換する関数。
- * 圧縮と変換を組み合わせることで、サイズの削減とパフォーマンスの向上を図ります。
  */
 const imageMiniWebpTinypng = () => {
 	const webpQuality = 90; // WebPの圧縮率（0〜100）
@@ -134,7 +138,10 @@ const imageMiniWebpTinypng = () => {
 		.pipe(dest(distImg));
 };
 
-// 変更の監視
+/**
+ * ファイル変更を監視し、変更があった場合にタスクを実行します。
+ * scssファイルとWordPressテーマのファイル変更を監視します。
+ */
 const watchFiles = (done) => {
 	const watchPattern = [srcSass, `!${srcSassFolderBase}**/_index.scss`];
 	watch(watchPattern, series(updateIndexWithUse, compileSass));
@@ -142,7 +149,7 @@ const watchFiles = (done) => {
 	done();
 };
 
-// タスク実行
+// Gulpタスク実行
 exports.imgmin = imageMiniTinypng; // 画像圧縮タスク
 exports.webp = imageMiniWebpTinypng; // WebP変換タスク
-exports.default = series(watchFiles, browserSyncFunc);
+exports.default = series(watchFiles, browserSyncFunc); // デフォルトタスク

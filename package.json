@@ -1,9 +1,10 @@
 {
 	"name": "template-wp",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"description": "WordPress開発用テーマ",
 	"scripts": {
 		"default": "npx gulp",
+		"imgmin": "npx gulp imgmin",
 		"webp": "npx gulp webp"
 	},
 	"devDependencies": {
