@@ -1,12 +1,12 @@
 const { src, dest, series, watch, parallel } = require("gulp");
 const sass = require("gulp-sass")(require("sass"));
+const fs = require("fs");
 const gcmq = require("gulp-group-css-media-queries");
 const notify = require("gulp-notify");
 const plumber = require("gulp-plumber");
 const postcss = require("gulp-postcss");
 const autoprefixer = require("autoprefixer");
 const cssdeclsort = require("css-declaration-sorter");
-const sassGlob = require("gulp-sass-glob-use-forward");
 const webp = require("gulp-webp");
 const browserSync = require("browser-sync");
 const tinypng = require("gulp-tinypng-compress");
@@ -16,11 +16,49 @@ const proxy = "http://site-host.local/"; // local ドメイン
 const themaName = "./wp-thema"; // WordPressテーマ名
 const srcSass = "./src/scss/**/*.scss";
 const srcImg = "./src/img/**";
-const distCss = `${themaName}/assets/css`;
-const distImg = `${themaName}/assets/img`;
 const distFile = `${themaName}/**/*`;
+const distImg = `${themaName}/assets/img`;
+const distCss = `${themaName}/assets/css`;
+const srcSassFolderBase = "./src/scss/";
+const srcSassFolders = [
+	// _index.scssに@useでまとめたいフォルダを指定
+	"component",
+	"layout",
+	"project",
+	"library",
+	"utility",
+	"wp",
+];
 
-// Sassコンパイル
+/**
+ * _index.scssファイルに@useを追加する関数。指定されたフォルダ内の_scssファイルを
+ * _index.scssに@useで読み込みます。
+ */
+const updateIndexWithUse = (done) => {
+	srcSassFolders.forEach((folder) => {
+		const dir = `${srcSassFolderBase}${folder}`;
+		const files = fs
+			.readdirSync(dir)
+			.filter(
+				(file) =>
+					file.startsWith("_") &&
+					file.endsWith(".scss") &&
+					file !== "_index.scss"
+			);
+
+		let importContent = files
+			.map((file) => `@use "${file.replace(".scss", "")}";`)
+			.join("\n");
+		fs.writeFileSync(`${dir}/_index.scss`, importContent);
+	});
+	done();
+};
+
+/**
+ * Sassファイルをコンパイルする関数。SassファイルをCSSにコンパイルし、
+ * 自動的にベンダープレフィックスを追加、メディアクエリをグループ化し、
+ * CSSプロパティをアルファベット順にソートします。
+ */
 const compileSass = (done) => {
 	src(srcSass)
 		.pipe(
@@ -28,8 +66,7 @@ const compileSass = (done) => {
 				errorHandler: notify.onError("Error:<%= error.message %>"),
 			})
 		)
-		.pipe(sassGlob())
-		.pipe(sass({ outputStyle: "compressed" }))
+		.pipe(sass())
 		.pipe(postcss([autoprefixer()]))
 		.pipe(
 			postcss([
@@ -54,6 +91,7 @@ const browserSyncFunc = (done) => {
 	});
 	done();
 };
+
 const browserSyncReload = (done) => {
 	browserSync.reload();
 	done();
@@ -98,7 +136,8 @@ const imageMiniWebpTinypng = () => {
 
 // 変更の監視
 const watchFiles = (done) => {
-	watch(srcSass, series(compileSass, browserSyncReload));
+	const watchPattern = [srcSass, `!${srcSassFolderBase}**/_index.scss`];
+	watch(watchPattern, series(updateIndexWithUse, compileSass));
 	watch(distFile, browserSyncReload);
 	done();
 };
