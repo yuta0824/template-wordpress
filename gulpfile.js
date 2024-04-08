@@ -8,14 +8,14 @@ const autoprefixer = require("autoprefixer");
 const cssdeclsort = require("css-declaration-sorter");
 const sassGlob = require("gulp-sass-glob-use-forward");
 const webp = require("gulp-webp");
-const del = require("del");
 const browserSync = require("browser-sync");
+const tinypng = require("gulp-tinypng-compress");
 
 // パスの定義
 const proxy = "http://site-host.local/"; // local ドメイン
 const themaName = "./wp-thema"; // WordPressテーマ名
-const srcSass = "./scss/**/*.scss";
-const srcImg = "./img/**";
+const srcSass = "./src/scss/**/*.scss";
+const srcImg = "./src/img/**";
 const distCss = `${themaName}/assets/css`;
 const distImg = `${themaName}/assets/img`;
 const distFile = `${themaName}/**/*`;
@@ -59,39 +59,51 @@ const browserSyncReload = (done) => {
 	done();
 };
 
-// 画像ファイルリセット
-const clean = () => {
-	return del(distImg, {
-		force: true,
-	});
-};
 
-// 画像をコピー
-const copyImages = (done) => {
-	src(srcImg).pipe(dest(distImg));
-	done();
-};
-
-//webP変換
-function imageWebp() {
+/**
+ * 画像ファイルをTinyPNGを使用して圧縮する関数。
+ * PNG、JPG、JPEG形式の画像ファイルを対象に圧縮を行い、出力ディレクトリに保存します。
+ */
+const tinypngApi = "XXXXXXXXXXXXXX"; // TinyPNGのAPI Key
+const imageMiniTinypng = () => {
 	return src([`${srcImg}/**.png`, `${srcImg}/**.jpg`, `${srcImg}/**.jpeg`])
 		.pipe(
+			tinypng({
+				key: tinypngApi,
+			})
+		)
+		.pipe(dest(distImg));
+};
+
+/**
+ * 画像ファイルをTinyPNGで圧縮した後、WebP形式に変換する関数。
+ * 圧縮と変換を組み合わせることで、サイズの削減とパフォーマンスの向上を図ります。
+ */
+const imageMiniWebpTinypng = () => {
+	const webpQuality = 90; // WebPの圧縮率（0〜100）
+	return src([`${srcImg}/**.png`, `${srcImg}/**.jpg`, `${srcImg}/**.jpeg`])
+		.pipe(
+			tinypng({
+				key: tinypngApi,
+			})
+		)
+		.pipe(
 			webp({
-				quality: 90,
+				quality: webpQuality,
 				method: 6,
 			})
 		)
-		.pipe(dest(`${distImg}`));
-}
+		.pipe(dest(distImg));
+};
 
 // 変更の監視
 const watchFiles = (done) => {
 	watch(srcSass, series(compileSass, browserSyncReload));
-	watch(srcImg, series(clean, copyImages, browserSyncReload));
 	watch(distFile, browserSyncReload);
 	done();
 };
 
 // タスク実行
-exports.webp = imageWebp;
+exports.imgmin = imageMiniTinypng; // 画像圧縮タスク
+exports.webp = imageMiniWebpTinypng; // WebP変換タスク
 exports.default = series(watchFiles, browserSyncFunc);
