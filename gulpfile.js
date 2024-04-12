@@ -48,7 +48,7 @@ const updateIndexWithUse = (done) => {
 			);
 
 		let importContent = files
-			.map((file) => `@use "${file.replace(".scss", "")}";`)
+			.map((file) => `@use "${file.replace(/^_/, "").replace(".scss", "")}";`)
 			.join("\n");
 		fs.writeFileSync(`${dir}/_index.scss`, importContent);
 	});
@@ -94,7 +94,6 @@ const browserSyncFunc = (done) => {
 	done();
 };
 
-
 /**
  * ファイル変更時にブラウザをリロードする関数です。
  */
@@ -102,7 +101,6 @@ const browserSyncReload = (done) => {
 	browserSync.reload();
 	done();
 };
-
 
 /**
  * 画像ファイルをTinyPNGを使用して圧縮し、出力先に保存します。
