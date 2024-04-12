@@ -5,7 +5,8 @@
 	"scripts": {
 		"default": "npx gulp",
 		"imgmin": "npx gulp imgmin",
-		"webp": "npx gulp webp"
+		"webp": "npx gulp webp",
+		"stylelint": "npx stylelint \"**/*.scss\" --fix"
 	},
 	"devDependencies": {
 		"autoprefixer": "^9.8.8",
