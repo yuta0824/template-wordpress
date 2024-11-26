@@ -76,14 +76,47 @@ const webpQuality = 90;
 
 ## ファイル構造
 
+- .composer・・・WordPressコーディング規約
+- .vscode・・・VSCodeの設定ファイル
+- src/・・・コンパイル前のファイル群
+  - img/・・・src 画像ファイル群
+  - sass/・・・Sass ファイル群
 - wp-thema/・・・テーマディレクトリ
   - assets/
     - css/・・・コンパイル後の CSS が出力されます
     - img/・・・コンパイル後の画像が出力されます
-- src/・・・コンパイル前のファイル群
-  - img/・・・src 画像ファイル群
-  - sass/・・・Sass ファイル群
+- .editorconfig・・・エディタの設定ファイル
+- .gitignore・・・Git管理
+- .markuplintrc・・・HTMLとPHPのlintツール
+- .prettierrc・・・自動整形
+- .stylelintrc.json・・・CSSとSassのlintツール
+- eslint.config.mjs・・・JavaScriptのlintツール
+- gulpfile.js・・・Gulp設定ファイル
+- index.php・・・空のindex
 - package.json・・・glup パッケージ
-- gulpfile.js・・・glup タスク
-- .editorconfig・・・エディタルール
-- .stylelintrc.json・・・Sass コーディングルール
+
+## lintツール
+
+使用するVS Code拡張機能
+
+### 自動整形
+
+https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
+
+### HTML PHP
+
+https://marketplace.visualstudio.com/items?itemName=yusukehirao.vscode-markuplint
+
+### CSS
+
+https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint
+
+### JavaScript
+
+https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
+
+### WordPress
+
+https://marketplace.visualstudio.com/items?itemName=shevaua.phpcs
+
+https://marketplace.visualstudio.com/items?itemName=persoderlind.vscode-phpcbf
