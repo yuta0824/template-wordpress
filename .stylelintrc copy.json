@@ -1,0 +1,33 @@
+{
+	"extends": [
+		"stylelint-config-standard",
+		"stylelint-config-standard-scss",
+		"stylelint-config-recess-order"
+	],
+	"rules": {
+		"no-descending-specificity": null,
+		"selector-class-pattern": null,
+		"rule-empty-line-before": [
+			"always",
+			{
+				"except": ["first-nested"],
+				"ignore": ["after-comment"]
+			}
+		],
+		"at-rule-empty-line-before": [
+			"always",
+			{
+				"except": ["blockless-after-same-name-blockless", "first-nested"],
+				"ignore": ["after-comment"]
+			}
+		]
+	},
+	"overrides": [
+		{
+			"files": ["**/*.scss"],
+			"rules": {
+				"block-no-empty": null
+			}
+		}
+	]
+}
