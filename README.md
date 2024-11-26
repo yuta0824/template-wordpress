@@ -23,17 +23,33 @@ WordPress のローカル開発環境には LOCAL を使用。
 
 5. LOCAL を Start site -> gulp 実行
 
-## gulp コマンド
+## ターミナルコマンド
 
+### composerのインストール
+
+```sh
+composer require --dev wp-coding-standards/wpcs:^3.0
 ```
-# パッケージのダウンロード
-$ npm i
 
-# コンパイル
-$ npx gulp
+y / n の入力を求めらるので、yを入力してください。
+インストール後は一度VS Codeを再起動してください。
 
-# webp変換
-$ npx gulp webp
+### パッケージ
+
+```sh
+npm i
+```
+
+### gulpデフォルトタスクの起動
+
+```sh
+npx gulp
+```
+
+### webp変換
+
+```sh
+npx gulp webp
 ```
 
 ## gulpfile.js の設定
@@ -44,15 +60,17 @@ $ npx gulp webp
 この中に、分割したパーシャルファイルを index.scss でまとめたいフォルダを指定してください。
 
 ```
+
 const srcSassFolders = [
-	// _index.scssに@useでまとめたいフォルダを指定
-	"component",
-	"layout",
-	"project",
-	"library",
-	"utility",
-	"wp",
+// _index.scssに@useでまとめたいフォルダを指定
+"component",
+"layout",
+"project",
+"library",
+"utility",
+"wp",
 ];
+
 ```
 
 ### 画像圧縮 tinyPNG
@@ -62,7 +80,9 @@ API を取得し、API キーを入力してください。<br>
 [Developer API](https://tinypng.com/developers)
 
 ```
+
 const tinypngApi = "xxxxxxxxxxxxxxx"; // TinyPNGのAPI Key
+
 ```
 
 ### WebP 変換
@@ -71,7 +91,9 @@ WebP の圧縮率を 0〜100 の間で適宜調整してください。
 数値が低いほど圧縮率は高くなりますが、クオリティは低くなります。
 
 ```
+
 const webpQuality = 90;
+
 ```
 
 ## ファイル構造
@@ -120,3 +142,7 @@ https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
 https://marketplace.visualstudio.com/items?itemName=shevaua.phpcs
 
 https://marketplace.visualstudio.com/items?itemName=persoderlind.vscode-phpcbf
+
+```
+
+```

@@ -34,8 +34,8 @@
 	},
 
 	// phpcsとphpcbfの設定
-	"phpcs.executablePath": "./.composer/vendor/squizlabs/php_codesniffer/bin/phpcs",
-	"phpcbf.executablePath": "./.composer/vendor/squizlabs/php_codesniffer/bin/phpcbf",
+	"phpcs.executablePath": "./vendor/squizlabs/php_codesniffer/bin/phpcs",
+	"phpcbf.executablePath": "./vendor/squizlabs/php_codesniffer/bin/phpcbf",
 	"phpcs.standard": "WordPress",
 	"editor.detectIndentation": false,
 	"files.eol": "\n",
