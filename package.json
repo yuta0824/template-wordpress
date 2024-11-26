@@ -10,7 +10,7 @@
 		"lint:scss": "npx stylelint \"**/*.scss\"",
 		"lint:css": "npx stylelint \"**/*.css\"",
 		"lint:js": "npx eslint \"**/*.{js,jsx}\"",
-		"lint:php": "markuplint \"**/*.php\"",
+		"lint:php": "markuplint \"**/*.php\""
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.15.0",
