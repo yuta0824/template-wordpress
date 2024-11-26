@@ -4,37 +4,64 @@
 // パーシャルファイルのGlobeの動作確認
 .c-btn {
 	font-size: 10px;
-	color: blue;
+	color: #00f;
 
 	@media screen and (width >= 768px) {
-		color: red;
+		color: #f00;
 	}
 }
 
 .test {
-	color: blue;
+	color: #00f;
 
 	@media screen and (width >= 768px) {
-		color: red;
+		color: #f00;
 	}
 }
 
 // Autoprefixerの動作確認
 // https://github.com/postcss/autoprefixer/blob/main/README.md
 ::placeholder {
-	color: gray;
+	color: #808080;
 }
 
 @media (min-resolution: 2dppx) {
 	.image {
-		background-image: url("image@2x.png");
+		width: 100px;
+		width: 100%;
+		background-color: transparent;
+		background-image: url(image@2x.png);
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-size: contain;
 	}
 }
 
 // css-declaration-sorterの動作確認
 // https://github.com/Siilwyn/css-declaration-sorter
 .css-declaration-sorter {
-	color: red;
 	bottom: 10px;
 	align-self: center;
+	margin: 10px 0 0 0;
+	color: #f00;
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: contain;
+
+	p {
+	}
+
+	.hoge {
+		color: #00f;
+
+		.test {
+			color: #0f0;
+
+			.guga {
+				display: flex;
+				flex-direction: column;
+			}
+		}
+	}
 }

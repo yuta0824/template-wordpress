@@ -7,7 +7,6 @@ const notify = require("gulp-notify");
 const plumber = require("gulp-plumber");
 const postcss = require("gulp-postcss");
 const autoprefixer = require("autoprefixer");
-const cssdeclsort = require("css-declaration-sorter");
 const webp = require("gulp-webp");
 const browserSync = require("browser-sync");
 const tinypng = require("gulp-tinypng-compress");
@@ -24,11 +23,11 @@ const srcSassFolderBase = "./src/scss/";
 const srcSassFolders = [
 	// _index.scssに@useでまとめたいフォルダを指定
 	"component",
-	"layout",
-	"project",
-	"library",
-	"utility",
-	"wp",
+	// "layout",
+	// "project",
+	// "library",
+	// "utility",
+	// "wp",
 ];
 
 /**
@@ -68,13 +67,6 @@ const compileSass = (done) => {
 		)
 		.pipe(sass())
 		.pipe(postcss([autoprefixer()]))
-		.pipe(
-			postcss([
-				cssdeclsort({
-					order: "alphabetical",
-				}),
-			])
-		)
 		.pipe(gcmq())
 		.pipe(dest(distCss));
 	done();
