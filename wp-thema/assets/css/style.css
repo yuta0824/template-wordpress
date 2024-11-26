@@ -1,38 +1,62 @@
 .c-btn {
-  color: blue;
   font-size: 10px;
+  color: #00f;
 }
 
 .test {
-  color: blue;
+  color: #00f;
 }
 
 ::-moz-placeholder {
-  color: gray;
+  color: #808080;
 }
 
 ::placeholder {
-  color: gray;
+  color: #808080;
 }
 
 .css-declaration-sorter {
-  align-self: center;
   bottom: 10px;
-  color: red;
+  align-self: center;
+  margin: 10px 0 0 0;
+  color: #f00;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+}
+
+.css-declaration-sorter .hoge {
+  color: #00f;
+}
+
+.css-declaration-sorter .hoge .test {
+  color: #0f0;
+}
+
+.css-declaration-sorter .hoge .test .guga {
+  display: flex;
+  flex-direction: column;
 }
 
 @media screen and (width >= 768px) {
   .c-btn {
-    color: red;
+    color: #f00;
   }
 
   .test {
-    color: red;
+    color: #f00;
   }
 }
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
   .image {
-    background-image: url("image@2x.png");
+    width: 100px;
+    width: 100%;
+    background-color: transparent;
+    background-image: url(image@2x.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
   }
 }
