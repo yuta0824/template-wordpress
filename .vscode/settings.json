@@ -1,0 +1,70 @@
+{
+	// ファイルの自動保存
+	"files.autoSave": "onFocusChange",
+
+	// 保存時にフォーマット
+	"editor.formatOnSave": true,
+
+	// HTMLのフォーマット設定
+	"[html]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+
+	// CSSのフォーマット設定
+	"[css]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+
+	// scssのフォーマット設定
+	"[scss]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+
+	// PHPのフォーマット設定
+	"[php]": {
+		// "editor.defaultFormatter": "bmewburn.vscode-intelephense-client", //vscode
+		"editor.defaultFormatter": "persoderlind.vscode-phpcbf", // wp
+
+		// 保存時のフォーマット無効
+		"editor.formatOnSave": false
+	},
+
+	// JavaScriptのフォーマット設定
+	"[javascript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+
+	// TypeScriptのフォーマット設定
+	"[typescriptreact]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+
+	// JSONのフォーマット設定
+	"[jsonc]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+
+	// JSONのフォーマット設定
+	"[json]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+
+	// phpcsとphpcbfの設定
+	"phpcs.executablePath": "../.composer/vendor/squizlabs/php_codesniffer/bin/phpcs",
+	"phpcbf.executablePath": "../.composer/vendor/squizlabs/php_codesniffer/bin/phpcbf",
+	"phpcs.standard": "WordPress",
+	"editor.detectIndentation": false,
+	"files.eol": "\n",
+	"phpcbf.standard": "WordPress",
+	"phpcbf.onsave": true,
+
+	// stylelint
+	"stylelint.validate": ["css", "scss"],
+	"editor.accessibilitySupport": "off",
+	"editor.codeActionsOnSave": {
+		"source.fixAll.stylelint": "explicit"
+	},
+
+	// markdownlint
+	"markuplint.targetLanguages": ["html", "php"]
+}
