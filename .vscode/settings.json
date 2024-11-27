@@ -20,27 +20,10 @@
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
 
-	// PHPのフォーマット設定
-	"[php]": {
-		"editor.defaultFormatter": "persoderlind.vscode-phpcbf", // wp
-
-		// 保存時のフォーマット無効
-		"editor.formatOnSave": false
-	},
-
 	// JavaScriptのフォーマット設定
 	"[javascript]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
-
-	// phpcsとphpcbfの設定
-	"phpcs.executablePath": "./vendor/squizlabs/php_codesniffer/bin/phpcs",
-	"phpcbf.executablePath": "./vendor/squizlabs/php_codesniffer/bin/phpcbf",
-	"phpcs.standard": "WordPress",
-	"editor.detectIndentation": false,
-	"files.eol": "\n",
-	"phpcbf.standard": "WordPress",
-	"phpcbf.onsave": true,
 
 	// stylelint
 	"stylelint.validate": ["css", "scss"],

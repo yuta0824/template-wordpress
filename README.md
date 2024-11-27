@@ -24,16 +24,6 @@ WordPress のローカル開発環境には LOCAL を使用。
 5. LOCAL を Start site -> gulp 実行
 
 ## ターミナルコマンド
-
-### composerのインストール
-
-```sh
-composer require --dev wp-coding-standards/wpcs:^3.0
-```
-
-y / n の入力を求めらるので、yを入力してください。
-インストール後は一度VS Codeを再起動してください。
-
 ### パッケージ
 
 ```sh
