@@ -10,8 +10,7 @@
 		"lint:scss": "npx stylelint \"**/*.scss\"",
 		"lint:css": "npx stylelint \"**/*.css\"",
 		"lint:js": "npx eslint \"**/*.{js,jsx}\"",
-		"lint:php": "markuplint \"**/*.php\"",
-		"lint:wordpress": "phpcs --standard=WordPress wp-thema"
+		"lint:php": "markuplint \"**/*.php\""
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.15.0",

@@ -14,6 +14,7 @@ get_header();
 
 <img src="<?php echo esc_url( get_template_directory_uri() ); ?>" alt="">
 <p><?php echo esc_html( get_the_title() ); ?></p>
+<p><?php echo esc_html( get_the_title() ); ?></p>
 <?php the_title(); ?>
 
 <?php get_sidebar(); ?>

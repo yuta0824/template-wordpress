@@ -8,9 +8,9 @@
 		"declaration-block-no-redundant-longhand-properties": true,
 		"no-descending-specificity": null,
 		"selector-class-pattern": [
-			"^[a-z][a-z0-9\\-]*$",
+			"^[a-z][a-z0-9\\-_]*$",
 			{
-				"message": "クラス名は小文字の英字で始まり、小文字、数字、ハイフンのみを使用してください。"
+				"message": "クラス名は小文字の英字で始まり、小文字、数字、ハイフン、アンダーバーのみを使用してください。"
 			}
 		],
 		"rule-empty-line-before": [
