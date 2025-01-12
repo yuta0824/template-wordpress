@@ -142,7 +142,3 @@ https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
 https://marketplace.visualstudio.com/items?itemName=shevaua.phpcs
 
 https://marketplace.visualstudio.com/items?itemName=persoderlind.vscode-phpcbf
-
-```
-
-```
