@@ -24,6 +24,7 @@ WordPress のローカル開発環境には LOCAL を使用。
 5. LOCAL を Start site -> gulp 実行
 
 ## ターミナルコマンド
+
 ### パッケージ
 
 ```sh
@@ -88,7 +89,6 @@ const webpQuality = 90;
 
 ## ファイル構造
 
-- .composer・・・WordPressコーディング規約
 - .vscode・・・VSCodeの設定ファイル
 - src/・・・コンパイル前のファイル群
   - img/・・・src 画像ファイル群
@@ -132,7 +132,3 @@ https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
 https://marketplace.visualstudio.com/items?itemName=shevaua.phpcs
 
 https://marketplace.visualstudio.com/items?itemName=persoderlind.vscode-phpcbf
-
-```
-
-```
