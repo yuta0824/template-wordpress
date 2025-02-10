@@ -1,4 +1,6 @@
-// Gulp及び必要なプラグインの読み込み
+/**
+ * Gulp及び必要なプラグインの読み込み
+ */
 const { src, dest, series, watch, parallel } = require("gulp");
 const sass = require("gulp-sass")(require("sass"));
 const fs = require("fs");
@@ -11,7 +13,9 @@ const webp = require("gulp-webp");
 const browserSync = require("browser-sync");
 const tinypng = require("gulp-tinypng-compress");
 
-// WordPressテーマやローカル開発環境のパスを定義します。
+/**
+ * WordPressテーマやローカル開発環境のパスを定義します。
+ */
 const proxy = "http://site-host.local/"; // local ドメイン
 const themaName = "./wp-thema"; // WordPressテーマ名
 const srcSass = "./src/scss/**/*.scss";
@@ -139,7 +143,9 @@ const watchFiles = (done) => {
 	done();
 };
 
-// Gulpタスク実行
+/**
+ *  Gulpタスク実行
+ */
 exports.imgmin = imageMiniTinypng; // 画像圧縮タスク
 exports.webp = imageMiniWebpTinypng; // WebP変換タスク
 exports.default = series(watchFiles, browserSyncFunc); // デフォルトタスク
