@@ -20,10 +20,20 @@
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
 
+	// PHPのフォーマット設定
+	"[php]": {
+		"editor.defaultFormatter": "valeryanm.vscode-phpsab"
+	},
+
 	// JavaScriptのフォーマット設定
 	"[javascript]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
 	},
+
+	// phpcsとphpcbfの設定
+	"phpsab.standard": "WordPress",
+	"phpsab.executablePathCS": "./vendor/squizlabs/php_codesniffer/bin/phpcs",
+	"phpsab.executablePathCBF": "./vendor/squizlabs/php_codesniffer/bin/phpcbf",
 
 	// stylelint
 	"stylelint.validate": ["css", "scss"],

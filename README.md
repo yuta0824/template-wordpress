@@ -1,14 +1,5 @@
 # Template WordPress
 
-## 開発環境
-
-以下の環境で動作を確認しています。
-
-- node v-18.16
-- npm v-9.5.1
-- WordPress v-6.3
-- PHP v-8.1.9
-
 ## セットアップ
 
 WordPress のローカル開発環境には LOCAL を使用。
@@ -24,6 +15,15 @@ WordPress のローカル開発環境には LOCAL を使用。
 5. LOCAL を Start site -> gulp 実行
 
 ## ターミナルコマンド
+
+### composerのインストール
+
+```sh
+composer require --dev wp-coding-standards/wpcs:^3.0
+```
+
+y / n の入力を求めらるので、yを入力してください。
+インストール後は一度VS Codeを再起動してください。
 
 ### パッケージ
 
@@ -87,26 +87,6 @@ const webpQuality = 90;
 
 ```
 
-## ファイル構造
-
-- .vscode・・・VSCodeの設定ファイル
-- src/・・・コンパイル前のファイル群
-  - img/・・・src 画像ファイル群
-  - sass/・・・Sass ファイル群
-- wp-thema/・・・テーマディレクトリ
-  - assets/
-    - css/・・・コンパイル後の CSS が出力されます
-    - img/・・・コンパイル後の画像が出力されます
-- .editorconfig・・・エディタの設定ファイル
-- .gitignore・・・Git管理
-- .markuplintrc・・・HTMLとPHPのlintツール
-- .prettierrc・・・自動整形
-- .stylelintrc.json・・・CSSとSassのlintツール
-- eslint.config.mjs・・・JavaScriptのlintツール
-- gulpfile.js・・・Gulp設定ファイル
-- index.php・・・空のindex
-- package.json・・・glup パッケージ
-
 ## lintツール
 
 使用するVS Code拡張機能
@@ -129,6 +109,4 @@ https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
 
 ### WordPress
 
-https://marketplace.visualstudio.com/items?itemName=shevaua.phpcs
-
-https://marketplace.visualstudio.com/items?itemName=persoderlind.vscode-phpcbf
+https://marketplace.visualstudio.com/items?itemName=ValeryanM.vscode-phpsab
